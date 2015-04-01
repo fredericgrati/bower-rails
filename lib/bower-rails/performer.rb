@@ -131,7 +131,7 @@ module BowerRails
           new_contents = contents.gsub(url_regex) do |match|
             relative_path = $1
             image_path = directory_path.join(relative_path).cleanpath
-            puts "#{match} => #{image_path}"
+            #puts "#{match} => #{image_path}"
 
             "url(<%= asset_path '#{image_path}' %>)"
           end

@@ -42,12 +42,11 @@ module BowerRails
     private
 
       def collect_tasks
-        install_opts = ''
         install_cmd = 'bower:install'
         install_cmd = 'bower:install:deployment' if @use_bower_install_deployment
-        install_opts = 'F' if @force_install
-        install_opts += 'S' if @silent_install
-        install_cmd += "[-#{install_opts}]" unless install_opts.empty?
+
+        install_cmd += '[-F]' if @force_install
+        install_cmd += ' --silent' if @silent_install
 
         @tasks << [install_cmd] if @install_before_precompile
         @tasks << ['bower:clean', install_cmd]   if @clean_before_precompile
