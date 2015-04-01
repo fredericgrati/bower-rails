@@ -50,7 +50,7 @@ module BowerRails
 
         @tasks << ['bower:clean']   if @clean_before_precompile
         @tasks << [install_cmd] if @install_before_precompile
-        @tasks << [install_cmd, 'bower:resolve'] if @resolve_before_precompile
+        @tasks << ['bower:resolve'] if @resolve_before_precompile
         @tasks.flatten!
         @tasks.uniq!
         p @tasks
