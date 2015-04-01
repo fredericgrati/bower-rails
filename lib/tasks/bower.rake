@@ -31,7 +31,7 @@ namespace :bower do
     task :production, :options do |_, args|
       args.with_defaults(:options => '')
       BowerRails::Performer.perform do |bower|
-        sh "#{bower} install -p #{args[:options]}"
+        sh "#{bower} install -p --silent #{args[:options]}"
       end
     end
   end
