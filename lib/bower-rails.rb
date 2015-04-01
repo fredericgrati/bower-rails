@@ -48,11 +48,12 @@ module BowerRails
         install_cmd += '[-F]' if @force_install
         install_cmd += '[-s]' if @silent_install
 
+        @tasks << ['bower:clean']   if @clean_before_precompile
         @tasks << [install_cmd] if @install_before_precompile
-        @tasks << ['bower:clean', install_cmd]   if @clean_before_precompile
         @tasks << [install_cmd, 'bower:resolve'] if @resolve_before_precompile
         @tasks.flatten!
         @tasks.uniq!
+        p @tasks
       end
   end
 
